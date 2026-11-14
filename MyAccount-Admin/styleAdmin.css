@@ -1,0 +1,652 @@
+/* ===== Variables (tomadas del diseño en Figma) ===== */
+:root {
+  --naranja: #ff7b00;
+  --amarillo: #fee438;
+  --gris-pista: #d9d9d9;
+  --gris-texto: #6c6c6c;
+  --gris-claro: #848484;
+  --gris-borde: #525252;
+  --panel: rgba(192, 192, 192, 0.13);
+  --negro: #000000;
+  --blanco: #ffffff;
+  --linea: #7a7a7a;
+  --fuente: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fuente);
+  color: var(--negro);
+  background: var(--blanco);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Header (106 px de alto) ===== */
+.header {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 5vw, 81px);
+  height: 106px;
+  padding: 0 30px;
+  background: var(--blanco);
+  border-bottom: 1px solid var(--linea);
+}
+
+.header__logo {
+  display: block;
+  width: 116px;
+  height: 79px;
+  flex-shrink: 0;
+}
+
+.header__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.header__nav {
+  display: flex;
+  gap: 40px;
+  margin-left: clamp(0px, 4.5vw, 81px);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.header__nav a:hover {
+  color: var(--naranja);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 54px;
+  margin-left: auto;
+}
+
+.header__cart {
+  display: block;
+  width: 52px;
+  height: 52px;
+}
+
+.header__cart img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* En Figma el ícono está rotado 180° y espejado en Y (equivale a espejo horizontal) */
+  transform: scaleX(-1);
+}
+
+.header__avatar {
+  display: block;
+  width: 89px;
+  height: 89px;
+  flex-shrink: 0;
+}
+
+.header__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+/* ===== Portada (422 px de alto, ancho completo) ===== */
+.hero {
+  width: 100%;
+  height: clamp(180px, 24.4vw, 422px);
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ===== Contenedor (el contenido arranca a 227 px en 1728 px) ===== */
+.contenido {
+  width: min(1274px, 100% - 48px);
+  margin: 0 auto;
+}
+
+/* ===== Perfil ===== */
+.perfil {
+  display: flex;
+  align-items: flex-start;
+  gap: 33px;
+  margin-top: 31px;
+}
+
+.perfil__foto {
+  display: block;
+  width: 216px;
+  height: 216px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* El nombre queda centrado con la foto; "Cerrar sesión" va justo debajo */
+.perfil__texto {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 86px;
+  min-width: 0;
+}
+
+.perfil__nombre {
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.perfil__salir {
+  align-self: flex-start;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--naranja);
+}
+
+.perfil__salir:hover {
+  text-decoration: underline;
+}
+
+/* ===== Secciones ===== */
+.seccion {
+  margin-top: 59px;
+}
+
+.perfil + .seccion {
+  margin-top: 72px;
+}
+
+.seccion__titulo {
+  padding-left: 2px;
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* ===== Agregar clases ===== */
+.clases {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 21px;
+  margin-top: 35px;
+  padding-left: 2px;
+}
+
+.clase {
+  width: 173px;
+  height: 144px;
+  padding: 12px 8px 0;
+  border: 1px solid var(--naranja);
+  border-radius: 10px;
+}
+
+.clase__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  height: 20px;
+}
+
+.clase__nombre {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--gris-borde);
+}
+
+.clase__cupos {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--gris-claro);
+}
+
+.clase__cupos img {
+  display: block;
+}
+
+.clase__instructor {
+  margin-top: 7px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 32px;
+  color: var(--gris-claro);
+}
+
+.clase__horario {
+  width: 144px;
+  height: 22px;
+  margin: 9px 0 0 7px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: left;
+  padding-left: 10px;
+  color: var(--gris-claro);
+  background: rgba(255, 123, 0, 0.21);
+  border-radius: 5px;
+}
+
+.boton-mas {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-left: 26px;
+  flex-shrink: 0;
+  border: 2px solid var(--gris-borde);
+  border-radius: 50%;
+}
+
+.boton-mas span {
+  padding-bottom: 3px;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--gris-borde);
+}
+
+.boton-mas:hover {
+  filter: brightness(0.95);
+}
+
+.boton-mas:focus-visible {
+  outline: 3px solid var(--naranja);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+/* ===== Ventas del día ===== */
+.ventas {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 45px;
+  padding-left: 3px;
+}
+
+.venta {
+  display: grid;
+  grid-template-columns: minmax(0, 437px) auto;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  height: 66px;
+  padding: 0 25px;
+  font-size: clamp(16px, 1.9vw, 24px);
+  font-weight: 600;
+  line-height: 1.1;
+  border: 1px solid var(--naranja);
+  border-radius: 15px;
+}
+
+/* ===== Usuarios ===== */
+.usuarios {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 45px;
+}
+
+.usuario {
+  display: grid;
+  grid-template-columns: minmax(0, 298px) minmax(0, 1fr) 47px;
+  align-items: center;
+  width: 100%;
+  max-width: 625px;
+  height: 66px;
+  padding: 0 26px 0 25px;
+  font-weight: 600;
+  line-height: 1.1;
+  border: 1px solid var(--gris-borde);
+  border-radius: 15px;
+  transition: border-color 0.2s ease;
+}
+
+.usuario:hover {
+  border-color: var(--naranja);
+}
+
+.usuario:focus-visible {
+  outline: 3px solid rgba(255, 123, 0, 0.55);
+  outline-offset: 2px;
+}
+
+.usuario__nombre {
+  font-size: clamp(16px, 1.9vw, 24px);
+}
+
+.usuario__actividad {
+  font-size: 16px;
+  color: #363636;
+}
+
+.usuario__avatar {
+  display: block;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+}
+
+/* ===== Footer ===== */
+.footer {
+  margin-top: clamp(64px, 6vw, 82px);
+  padding: 0 64px 120px;
+}
+
+.footer__container {
+  display: flex;
+  gap: 120px;
+  padding: 80px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer__brand {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  min-width: 0;
+}
+
+.footer__company {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.48px;
+}
+
+.footer__text {
+  max-width: 560px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.08px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.footer__social {
+  display: flex;
+  gap: 24px;
+}
+
+.footer__social a {
+  display: block;
+  width: auto;
+  height: auto;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer__nav {
+  display: flex;
+  gap: 40px;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 130px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.08px;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.footer__col h2 {
+  padding-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--negro);
+}
+
+.footer__col a:hover {
+  color: var(--negro);
+}
+
+/* ===== Tablet / móvil ===== */
+@media (max-width: 900px) {
+  .footer {
+    padding: 0 24px 64px;
+  }
+
+  .footer__container {
+    flex-direction: column;
+    gap: 48px;
+    padding: 48px 0;
+  }
+
+  .footer__nav {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 700px) {
+  .perfil {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 24px;
+    gap: 16px;
+  }
+
+  .perfil__texto {
+    margin-top: 0;
+    align-items: center;
+  }
+
+  .perfil__salir {
+    align-self: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    min-height: 72px;
+    height: auto;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .header__logo {
+    width: 72px;
+    height: 50px;
+  }
+
+  .header__nav {
+    gap: 8px;
+    margin-left: 0;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .header__actions {
+    gap: 8px;
+  }
+
+  .header__cart {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header__avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .perfil__foto {
+    width: 160px;
+    height: 160px;
+  }
+
+  .clases {
+    gap: 16px;
+    margin-top: 24px;
+    padding-left: 0;
+  }
+
+  .clase {
+    max-width: 100%;
+  }
+
+  .clase__horario {
+    width: auto;
+    max-width: 100%;
+    margin-left: 0;
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+  .boton-mas {
+    margin-left: 0;
+  }
+
+  .ventas,
+  .usuarios {
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .venta {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    height: auto;
+    min-height: 66px;
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+
+  .usuario {
+    grid-template-columns: minmax(0, 1fr) 47px;
+    height: auto;
+    min-height: 66px;
+    padding-block: 10px;
+    row-gap: 4px;
+  }
+
+  .usuario__nombre {
+    grid-column: 1;
+  }
+
+  .usuario__actividad {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 13px;
+  }
+
+  .usuario__avatar {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .footer {
+    padding: 0 16px 48px;
+  }
+
+  .footer__container {
+    gap: 32px;
+    padding: 40px 0;
+  }
+
+  .footer__nav {
+    gap: 24px 12px;
+  }
+
+  .footer__col {
+    width: calc(50% - 6px);
+  }
+}
+
+@media (max-width: 380px) {
+  .header__logo {
+    width: 64px;
+  }
+
+  .header__nav {
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .header__cart {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header__avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .perfil__foto {
+    width: 144px;
+    height: 144px;
+  }
+
+  .venta {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .usuario {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}

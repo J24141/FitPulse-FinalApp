@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi cuenta (Admin) | FitPulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styleAdmin.css">
+</head>
+<body>
+
+  <!-- ===== Barra superior ===== -->
+  <header class="header">
+    <a class="header__logo" href="../Home/indexHome.html" aria-label="FitPulse, ir al inicio">
+      <img src="../img/LogoFitpulse.png" alt="FitPulse">
+    </a>
+
+    <nav class="header__nav" aria-label="Principal">
+      <a href="../Class/indexClass.html">CLASES</a>
+      <a href="#">BLOG</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="header__cart" href="../ShopPurshare/indexCarrito.html" aria-label="Carrito de compras">
+        <img src="../img/Shopping%20Cart.png" alt="">
+      </a>
+      <a class="header__avatar" href="../MyAccount-Admin/indexAdmin.html" aria-label="Mi cuenta">
+        <img src="../img/PerfilFoto.png" alt="" width="89" height="89">
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== Portada ===== -->
+  <div class="hero">
+    <img src="../img/BannerAcount.png" alt="">
+  </div>
+
+  <main class="contenido">
+
+    <!-- ===== Perfil ===== -->
+    <section class="perfil">
+      <img class="perfil__foto" src="../img/PerfilFoto.png" alt="Foto de perfil" width="216" height="216">
+      <div class="perfil__texto">
+        <h1 class="perfil__nombre">WILLIAM CAMILO AGUILAR ROJAS</h1>
+        <a class="perfil__salir" href="../Log-In/indexLog.html">CERRAR SESIÓN</a>
+      </div>
+    </section>
+
+    <!-- ===== Agregar clases ===== -->
+    <section class="seccion" aria-labelledby="titulo-clases">
+      <h2 class="seccion__titulo" id="titulo-clases">AGREGAR CLASES</h2>
+
+      <div class="clases">
+        <article class="clase">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">JOSÉ BERNAL<br>MORENO</p>
+          <p class="clase__horario">06:00 AM - 06:45 AM</p>
+        </article>
+
+        <article class="clase">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">ERIKA RIVERA<br>ROJAS</p>
+          <p class="clase__horario">07:00 AM - 07:45 AM</p>
+        </article>
+
+        <a class="boton-mas" href="../CreateClass-Admin/indexAdminClass.html" aria-label="Agregar clase">
+          <img >
+          <span aria-hidden="true">+</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== Ventas del día ===== -->
+    <section class="seccion" aria-labelledby="titulo-ventas">
+      <h2 class="seccion__titulo" id="titulo-ventas">VENTAS DEL DIA</h2>
+
+      <ul class="ventas">
+        <li class="venta">
+          <span class="venta__nombre">PAQUETE CLASE YOGA X1</span>
+          <span class="venta__precio">+$45.000</span>
+        </li>
+        <li class="venta">
+          <span class="venta__nombre">PAQUETE CLASE CROSSFIT X2</span>
+          <span class="venta__precio">+$110.000</span>
+        </li>
+        <li class="venta">
+          <span class="venta__nombre">PAQUETE CLASE SPINNING X1</span>
+          <span class="venta__precio">+$65.000</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Usuarios ===== -->
+    <section class="seccion" aria-labelledby="titulo-usuarios">
+      <h2 class="seccion__titulo" id="titulo-usuarios">USUARIOS</h2>
+
+      <ul class="usuarios">
+        <li><a class="usuario" href="../MyAccount-User/indexUser.html">
+          <span class="usuario__nombre">LUIS CASTIBLANCO</span>
+          <span class="usuario__actividad">Activo hace 1 dia(s)</span>
+          <img class="usuario__avatar" src="../img/UserImg.png" alt="" width="47" height="47">
+        </a></li>
+        <li><a class="usuario" href="../MyAccount-User/indexUser.html">
+          <span class="usuario__nombre">LUIS CASTIBLANCO</span>
+          <span class="usuario__actividad">Activo hace 1 dia(s)</span>
+          <img class="usuario__avatar" src="../img/UserImg.png" alt="" width="47" height="47">
+        </a></li>
+        <li><a class="usuario" href="../MyAccount-User/indexUser.html">
+          <span class="usuario__nombre">LUIS CASTIBLANCO</span>
+          <span class="usuario__actividad">Activo hace 1 dia(s)</span>
+          <img class="usuario__avatar" src="../img/UserImg.png" alt="" width="47" height="47">
+        </a></li>
+        <li><a class="usuario" href="../MyAccount-User/indexUser.html">
+          <span class="usuario__nombre">LUIS CASTIBLANCO</span>
+          <span class="usuario__actividad">Activo hace 1 dia(s)</span>
+          <img class="usuario__avatar" src="../img/UserImg.png" alt="" width="47" height="47">
+        </a></li>
+        <li><a class="usuario" href="../MyAccount-User/indexUser.html">
+          <span class="usuario__nombre">LUIS CASTIBLANCO</span>
+          <span class="usuario__actividad">Activo hace 1 dia(s)</span>
+          <img class="usuario__avatar" src="../img/UserImg.png" alt="" width="47" height="47">
+        </a></li>
+        <li><a class="usuario" href="../MyAccount-User/indexUser.html">
+          <span class="usuario__nombre">LUIS CASTIBLANCO</span>
+          <span class="usuario__actividad">Activo hace 1 dia(s)</span>
+          <img class="usuario__avatar" src="../img/UserImg.png" alt="" width="47" height="47">
+        </a></li>
+        <li><a class="usuario" href="../MyAccount-User/indexUser.html">
+          <span class="usuario__nombre">LUIS CASTIBLANCO</span>
+          <span class="usuario__actividad">Activo hace 1 dia(s)</span>
+          <img class="usuario__avatar" src="../img/UserImg.png" alt="" width="47" height="47">
+        </a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <div>
+          <p class="footer__company">© 2026 FitPulse</p>
+          <p class="footer__text">Ocho años impulsando tu mejor versión. Reserva, entrena y supera tus límites.</p>
+        </div>
+
+        <nav class="footer__social" aria-label="Redes sociales">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="X">X</a>
+        </nav>
+      </div>
+
+      <div class="footer__nav">
+        <nav class="footer__col" aria-label="Features">
+          <h2>Features</h2>
+          <a href="#">Core features</a>
+          <a href="#">Pro experience</a>
+          <a href="#">Integrations</a>
+        </nav>
+        <nav class="footer__col" aria-label="Learn more">
+          <h2>Learn more</h2>
+          <a href="#">Blog</a>
+          <a href="#">Case studies</a>
+          <a href="#">Customer stories</a>
+          <a href="#">Best practices</a>
+        </nav>
+        <nav class="footer__col" aria-label="Support">
+          <h2>Support</h2>
+          <a href="#">Contact</a>
+          <a href="#">Support</a>
+          <a href="#">Legal</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

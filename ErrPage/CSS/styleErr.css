@@ -1,0 +1,92 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter-Regular", Arial, sans-serif;
+}
+
+@font-face {
+  font-family: "Inter-Regular";
+  src: local("Inter-Regular");
+}
+
+.pantalla-carga-error {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 48px 24px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.pantalla-carga-error .text-wrapper {
+  color: #ff7b00;
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.2;
+}
+
+.pantalla-carga-error .illustration {
+  display: grid;
+  width: min(425px, 75vw);
+  aspect-ratio: 1;
+  place-items: center;
+  border: clamp(8px, 2vw, 16px) solid #ff7b00;
+  border-radius: 50%;
+  color: #ff7b00;
+  font-size: clamp(96px, 22vw, 200px);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 1;
+}
+
+.pantalla-carga-error .div {
+  max-width: 640px;
+  color: #000;
+  font-size: clamp(16px, 2.5vw, 20px);
+  line-height: 1.5;
+}
+
+.pantalla-carga-error .volver-al-inicio {
+  display: inline-flex;
+  gap: 5px;
+  color: #000;
+  font-size: 20px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: #ff7b00;
+  text-underline-offset: 3px;
+}
+
+.pantalla-carga-error .text-wrapper-2 {
+  color: #ff7b00;
+}
+
+.pantalla-carga-error .volver-al-inicio:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .pantalla-carga-error {
+    gap: 16px;
+    padding: 32px 20px;
+  }
+
+  .pantalla-carga-error .illustration {
+    width: min(300px, 68vw);
+  }
+}

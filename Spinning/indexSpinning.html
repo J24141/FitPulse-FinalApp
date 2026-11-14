@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinning | FitPulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styleSpinning.css">
+</head>
+<body>
+
+  <!-- ===== Barra superior ===== -->
+  <header class="header">
+    <a class="header__logo" href="../Home/indexHome.html" aria-label="FitPulse, ir al inicio">
+      <img src="../img/LogoFitpulse.png" alt="FitPulse">
+    </a>
+
+    <nav class="header__nav" aria-label="Principal">
+      <a href="../Class/indexClass.html">CLASES</a>
+      <a href="#">BLOG</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="header__cart" href="../ShopPurshare/indexCarrito.html" aria-label="Carrito de compras">
+        <img src="../img/Shopping%20Cart.png" alt="">
+      </a>
+      <a class="header__avatar" href="../MyAccount/indexAccount.html" aria-label="Mi cuenta">
+        <img src="../img/UserImg.png" alt="" width="89" height="89">
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== Imagen de portada ===== -->
+  <div class="hero">
+    <img src="../img/PromocionalSpinning.png" alt="Clase de Spinning">
+  </div>
+
+  <main class="contenido">
+
+    <!-- ===== Detalle de la clase + resumen ===== -->
+    <section class="detalle">
+      <div class="detalle__info">
+        <div class="detalle__titulo-fila">
+          <h1 class="detalle__titulo">SPINNING</h1>
+          <p class="detalle__precio">$ 65.000 COP</p>
+          <p class="detalle__cupos" aria-label="Cupos: 5 de 15">
+            <img src="../img/People.png" alt="" width="48" height="48">
+            <span>5/15</span>
+          </p>
+        </div>
+
+        <p class="detalle__descripcion">
+          Una experiencia de alta energía que, al ritmo de la música y luces dinámicas, te impulsa a desafiar tus límites mientras mejoras tu resistencia cardiovascular. Es la opción ideal para liberar estrés, quemar calorías de forma eficiente y fortalecer tus piernas y abdomen en una comunidad vibrante que te acompaña en cada pedalada.
+        </p>
+      </div>
+
+      <aside class="resumen" aria-label="Resumen de la clase">
+        <ul class="resumen__stats">
+          <li class="stat">
+            <img class="stat__icono stat__icono--espejo" src="../img/Triceps.png" alt="" width="49" height="49">
+            <span class="stat__valor">50%</span>
+            <span class="stat__nombre">FUERZA</span>
+          </li>
+          <li class="stat">
+            <img class="stat__icono" src="../img/Heart.png" alt="" width="56" height="49">
+            <span class="stat__valor">0%</span>
+            <span class="stat__nombre">CARDIO</span>
+          </li>
+          <li class="stat">
+            <img class="stat__icono" src="../img/Gymnastics.png" alt="" width="47" height="49">
+            <span class="stat__valor">50%</span>
+            <span class="stat__nombre">FLEXIBILIDAD</span>
+          </li>
+        </ul>
+
+        <h2 class="resumen__titulo">PROMEDIO DE GASTO DE CALORÍAS</h2>
+        <p class="resumen__nota">*Caminar 30 minutos gasta 150 calorías</p>
+
+        <a class="boton-carrito" href="../ShopPurshare/indexCarrito.html">AGREGAR AL CARRITO</a>
+      </aside>
+    </section>
+
+    <!-- ===== Reseñas ===== -->
+    <section class="resenas" aria-labelledby="resenas-titulo">
+      <h2 class="resenas__titulo" id="resenas-titulo">RESEÑAS</h2>
+
+      <!-- Distribución de calificaciones (el ancho de cada barra es el % de reseñas) -->
+      <ul class="barras">
+        <li class="barra">
+          <span class="barra__nivel">5</span>
+          <span class="barra__pista"><span class="barra__relleno" style="width: 100%"></span></span>
+        </li>
+        <li class="barra">
+          <span class="barra__nivel">4</span>
+          <span class="barra__pista"><span class="barra__relleno" style="width: 89.6%"></span></span>
+        </li>
+        <li class="barra">
+          <span class="barra__nivel">3</span>
+          <span class="barra__pista"><span class="barra__relleno" style="width: 36.8%"></span></span>
+        </li>
+        <li class="barra">
+          <span class="barra__nivel">2</span>
+          <span class="barra__pista"><span class="barra__relleno" style="width: 12.8%"></span></span>
+        </li>
+        <li class="barra">
+          <span class="barra__nivel">1</span>
+          <span class="barra__pista"><span class="barra__relleno" style="width: 5.2%"></span></span>
+        </li>
+      </ul>
+
+      <div class="lista-resenas">
+
+        <article class="resena">
+          <header class="resena__top">
+            <img class="resena__avatar" src="../img/UserImg.png" alt="" width="57" height="57">
+            <div class="resena__usuario">
+              <p class="resena__nombre">Ryan</p>
+              <p class="resena__nivel">Amateur</p>
+            </div>
+            <p class="resena__fecha">Hace 2 meses</p>
+          </header>
+          <div class="resena__cuerpo">
+            <div class="estrellas" role="img" aria-label="4 de 5 estrellas">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/StarEmpty.png" alt="" width="24" height="24">
+            </div>
+            <ul class="tags">
+              <li>#Yoga</li>
+              <li>#Entretenido</li>
+              <li>#Innovador</li>
+            </ul>
+            <p class="resena__texto">Fascinante clase de yoga me gusto como la profe enseña, llevo 4 meses tomando clases y puedo notar los beneficios que tiene</p>
+          </div>
+        </article>
+
+        <article class="resena">
+          <header class="resena__top">
+            <img class="resena__avatar" src="../img/UserImg.png" alt="" width="57" height="57">
+            <div class="resena__usuario">
+              <p class="resena__nombre">Ryan</p>
+              <p class="resena__nivel">Amateur</p>
+            </div>
+            <p class="resena__fecha">Hace 2 meses</p>
+          </header>
+          <div class="resena__cuerpo">
+            <div class="estrellas" role="img" aria-label="4 de 5 estrellas">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/StarEmpty.png" alt="" width="24" height="24">
+            </div>
+            <ul class="tags">
+              <li>#Yoga</li>
+              <li>#Entretenido</li>
+              <li>#Innovador</li>
+            </ul>
+            <p class="resena__texto">Fascinante clase de yoga me gusto como la profe enseña, llevo 4 meses tomando clases y puedo notar los beneficios que tiene</p>
+          </div>
+        </article>
+
+        <article class="resena">
+          <header class="resena__top">
+            <img class="resena__avatar" src="../img/UserImg.png" alt="" width="57" height="57">
+            <div class="resena__usuario">
+              <p class="resena__nombre">Ryan</p>
+              <p class="resena__nivel">Amateur</p>
+            </div>
+            <p class="resena__fecha">Hace 2 meses</p>
+          </header>
+          <div class="resena__cuerpo">
+            <div class="estrellas" role="img" aria-label="4 de 5 estrellas">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/StarEmpty.png" alt="" width="24" height="24">
+            </div>
+            <ul class="tags">
+              <li>#Yoga</li>
+              <li>#Entretenido</li>
+              <li>#Innovador</li>
+            </ul>
+            <p class="resena__texto">Fascinante clase de yoga me gusto como la profe enseña, llevo 4 meses tomando clases y puedo notar los beneficios que tiene</p>
+          </div>
+        </article>
+
+        <article class="resena">
+          <header class="resena__top">
+            <img class="resena__avatar" src="../img/UserImg.png" alt="" width="57" height="57">
+            <div class="resena__usuario">
+              <p class="resena__nombre">Ryan</p>
+              <p class="resena__nivel">Amateur</p>
+            </div>
+            <p class="resena__fecha">Hace 2 meses</p>
+          </header>
+          <div class="resena__cuerpo">
+            <div class="estrellas" role="img" aria-label="4 de 5 estrellas">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/StarEmpty.png" alt="" width="24" height="24">
+            </div>
+            <ul class="tags">
+              <li>#Yoga</li>
+              <li>#Entretenido</li>
+              <li>#Innovador</li>
+            </ul>
+            <p class="resena__texto">Fascinante clase de yoga me gusto como la profe enseña, llevo 4 meses tomando clases y puedo notar los beneficios que tiene</p>
+          </div>
+        </article>
+
+        <article class="resena">
+          <header class="resena__top">
+            <img class="resena__avatar" src="../img/UserImg.png" alt="" width="57" height="57">
+            <div class="resena__usuario">
+              <p class="resena__nombre">Ryan</p>
+              <p class="resena__nivel">Amateur</p>
+            </div>
+            <p class="resena__fecha">Hace 2 meses</p>
+          </header>
+          <div class="resena__cuerpo">
+            <div class="estrellas" role="img" aria-label="4 de 5 estrellas">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/StarEmpty.png" alt="" width="24" height="24">
+            </div>
+            <ul class="tags">
+              <li>#Yoga</li>
+              <li>#Entretenido</li>
+              <li>#Innovador</li>
+            </ul>
+            <p class="resena__texto">Fascinante clase de yoga me gusto como la profe enseña, llevo 4 meses tomando clases y puedo notar los beneficios que tiene</p>
+          </div>
+        </article>
+
+        <article class="resena">
+          <header class="resena__top">
+            <img class="resena__avatar" src="../img/UserImg.png" alt="" width="57" height="57">
+            <div class="resena__usuario">
+              <p class="resena__nombre">Ryan</p>
+              <p class="resena__nivel">Amateur</p>
+            </div>
+            <p class="resena__fecha">Hace 2 meses</p>
+          </header>
+          <div class="resena__cuerpo">
+            <div class="estrellas" role="img" aria-label="4 de 5 estrellas">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/StarEmpty.png" alt="" width="24" height="24">
+            </div>
+            <ul class="tags">
+              <li>#Yoga</li>
+              <li>#Entretenido</li>
+              <li>#Innovador</li>
+            </ul>
+            <p class="resena__texto">Fascinante clase de yoga me gusto como la profe enseña, llevo 4 meses tomando clases y puedo notar los beneficios que tiene</p>
+          </div>
+        </article>
+
+        <article class="resena">
+          <header class="resena__top">
+            <img class="resena__avatar" src="../img/UserImg.png" alt="" width="57" height="57">
+            <div class="resena__usuario">
+              <p class="resena__nombre">Ryan</p>
+              <p class="resena__nivel">Amateur</p>
+            </div>
+            <p class="resena__fecha">Hace 2 meses</p>
+          </header>
+          <div class="resena__cuerpo">
+            <div class="estrellas" role="img" aria-label="4 de 5 estrellas">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/Star.png" alt="" width="24" height="24">
+              <img src="../img/StarEmpty.png" alt="" width="24" height="24">
+            </div>
+            <ul class="tags">
+              <li>#Yoga</li>
+              <li>#Entretenido</li>
+              <li>#Innovador</li>
+            </ul>
+            <p class="resena__texto">Fascinante clase de yoga me gusto como la profe enseña, llevo 4 meses tomando clases y puedo notar los beneficios que tiene</p>
+          </div>
+        </article>
+
+      </div>
+
+      <form class="nueva-resena" action="#" method="post">
+        <label class="visually-hidden" for="nueva-resena">Escribir reseña</label>
+        <input class="nueva-resena__input" type="text" id="nueva-resena" name="resena" placeholder="Escribir Reseña">
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <div>
+          <p class="footer__company">© 2026 FitPulse</p>
+          <p class="footer__text">Ocho años impulsando tu mejor versión. Reserva, entrena y supera tus límites.</p>
+        </div>
+
+        <nav class="footer__social" aria-label="Redes sociales">
+          <a href="#" aria-label="Instagram"><img src="img/instagram.svg" alt="" width="24" height="24"></a>
+          <a href="#" aria-label="LinkedIn"><img src="img/linkedin.svg" alt="" width="24" height="24"></a>
+          <a href="#" aria-label="X"><img src="img/x.svg" alt="" width="24" height="24"></a>
+        </nav>
+      </div>
+
+      <div class="footer__nav">
+        <nav class="footer__col" aria-label="Features">
+          <h2>Features</h2>
+          <a href="#">Core features</a>
+          <a href="#">Pro experience</a>
+          <a href="#">Integrations</a>
+        </nav>
+        <nav class="footer__col" aria-label="Learn more">
+          <h2>Learn more</h2>
+          <a href="#">Blog</a>
+          <a href="#">Case studies</a>
+          <a href="#">Customer stories</a>
+          <a href="#">Best practices</a>
+        </nav>
+        <nav class="footer__col" aria-label="Support">
+          <h2>Support</h2>
+          <a href="#">Contact</a>
+          <a href="#">Support</a>
+          <a href="#">Legal</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuario (Admin) | FitPulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styleUser.css">
+</head>
+<body>
+
+  <!-- ===== Barra superior ===== -->
+  <header class="header">
+    <a class="header__logo" href="../Home/indexHome.html" aria-label="FitPulse, ir al inicio">
+      <img src="../img/LogoFitpulse.png" alt="FitPulse">
+    </a>
+
+    <nav class="header__nav" aria-label="Principal">
+      <a href="../Class/indexClass.html">CLASES</a>
+      <a href="#">BLOG</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="header__cart" href="../ShopPurshare/indexCarrito.html" aria-label="Carrito de compras">
+        <img src="../img/Shopping%20Cart.png" alt="">
+      </a>
+      <a class="header__avatar" href="../MyAccount-Admin/indexAdmin.html" aria-label="Mi cuenta">
+        <img src="../img/UserImg.png" alt="" width="89" height="89">
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== Portada ===== -->
+  <div class="hero">
+    <img src="../img/BannerAcount.png" alt="">
+  </div>
+
+  <main class="contenido">
+
+    <!-- ===== Perfil del usuario ===== -->
+    <section class="perfil">
+      <img class="perfil__foto" src="../img/UserImg.png" alt="Foto de perfil" width="216" height="216">
+      <div class="perfil__texto">
+        <h1 class="perfil__nombre">LUIS GABRIEL CASTIBLANCO FERRERO</h1>
+        <p class="perfil__email">luiscast123@gmail.com · Registrado hace 3 meses</p>
+        <button class="perfil__eliminar" type="button">ELIMINAR CUENTA</button>
+      </div>
+    </section>
+
+    <!-- ===== Clases compradas ===== -->
+    <section class="seccion" aria-labelledby="titulo-compradas">
+      <h2 class="seccion__titulo" id="titulo-compradas">CLASES COMPRADAS</h2>
+      <div class="clases">
+        <article class="clase">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">JOSÉ BERNAL<br>MORENO</p>
+          <p class="clase__horario">06:00 AM - 06:45 AM</p>
+        </article>
+
+        <article class="clase">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">ERIKA RIVERA<br>ROJAS</p>
+          <p class="clase__horario">07:00 AM - 07:45 AM</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Clases pasadas ===== -->
+    <section class="seccion" aria-labelledby="titulo-pasadas">
+      <h2 class="seccion__titulo" id="titulo-pasadas">CLASES PASADAS</h2>
+      <div class="clases clases--pasadas">
+        <article class="clase clase--pasada">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">JOSÉ BERNAL<br>MORENO</p>
+          <p class="clase__horario">06:00 AM - 06:45 AM</p>
+        </article>
+
+        <article class="clase clase--pasada">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">ERIKA RIVERA<br>ROJAS</p>
+          <p class="clase__horario">07:00 AM - 07:45 AM</p>
+        </article>
+
+        <article class="clase clase--pasada">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">JOSÉ BERNAL<br>MORENO</p>
+          <p class="clase__horario">06:00 AM - 06:45 AM</p>
+        </article>
+
+        <article class="clase clase--pasada">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">ERIKA RIVERA<br>ROJAS</p>
+          <p class="clase__horario">07:00 AM - 07:45 AM</p>
+        </article>
+
+        <article class="clase clase--pasada">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">JOSÉ BERNAL<br>MORENO</p>
+          <p class="clase__horario">06:00 AM - 06:45 AM</p>
+        </article>
+
+        <article class="clase clase--pasada">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">ERIKA RIVERA<br>ROJAS</p>
+          <p class="clase__horario">07:00 AM - 07:45 AM</p>
+        </article>
+
+        <article class="clase clase--pasada">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">JOSÉ BERNAL<br>MORENO</p>
+          <p class="clase__horario">06:00 AM - 06:45 AM</p>
+        </article>
+
+        <article class="clase clase--pasada">
+          <header class="clase__top">
+            <h3 class="clase__nombre">SPINNING</h3>
+            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
+              <img src="../img/People.png" alt="" width="20" height="20">
+              <span>5/15</span>
+            </p>
+          </header>
+          <p class="clase__instructor">ERIKA RIVERA<br>ROJAS</p>
+          <p class="clase__horario">07:00 AM - 07:45 AM</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Progreso ===== -->
+    <section class="seccion" aria-labelledby="titulo-progreso">
+      <h2 class="seccion__titulo" id="titulo-progreso">PROGRESO</h2>
+      <ul class="progreso">
+        <li class="logro">
+          <img class="logro__icono" src="../img/Star.png" alt="" width="137" height="119">
+          <span class="logro__valor">30</span>
+          <span class="logro__unidad">Sem</span>
+          <span class="logro__nombre">Racha más Larga</span>
+        </li>
+        <li class="logro">
+          <img class="logro__icono" src="../img/Gymnastics.png" alt="" width="137" height="119">
+          <span class="logro__valor">30</span>
+          <span class="logro__unidad">Yoga</span>
+          <span class="logro__nombre">Clases Tomadas</span>
+        </li>
+        <li class="logro">
+          <img class="logro__icono" src="../img/Heart.png" alt="" width="137" height="119">
+          <span class="logro__valor">30</span>
+          <span class="logro__unidad">Spinning</span>
+          <span class="logro__nombre">Clases Tomadas</span>
+        </li>
+        <li class="logro">
+          <img class="logro__icono" src="../img/Triceps.png" alt="" width="137" height="119">
+          <span class="logro__valor">30</span>
+          <span class="logro__unidad">Crossfit</span>
+          <span class="logro__nombre">Clases Tomadas</span>
+        </li>
+        <li class="logro">
+          <img class="logro__icono" src="../img/Triceps.png" alt="" width="137" height="119">
+          <span class="logro__valor">30</span>
+          <span class="logro__unidad">Kg</span>
+          <span class="logro__nombre">Peso levantado</span>
+        </li>
+        <li class="logro">
+          <img class="logro__icono" src="../img/Heart.png" alt="" width="137" height="119">
+          <span class="logro__valor">30</span>
+          <span class="logro__unidad">Km</span>
+          <span class="logro__nombre">Distancia Recorrida</span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <div>
+          <p class="footer__company">© 2026 FitPulse</p>
+          <p class="footer__text">Ocho años impulsando tu mejor versión. Reserva, entrena y supera tus límites.</p>
+        </div>
+
+        <nav class="footer__social" aria-label="Redes sociales">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="X">X</a>
+        </nav>
+      </div>
+
+      <div class="footer__nav">
+        <nav class="footer__col" aria-label="Features">
+          <h2>Features</h2>
+          <a href="#">Core features</a>
+          <a href="#">Pro experience</a>
+          <a href="#">Integrations</a>
+        </nav>
+        <nav class="footer__col" aria-label="Learn more">
+          <h2>Learn more</h2>
+          <a href="#">Blog</a>
+          <a href="#">Case studies</a>
+          <a href="#">Customer stories</a>
+          <a href="#">Best practices</a>
+        </nav>
+        <nav class="footer__col" aria-label="Support">
+          <h2>Support</h2>
+          <a href="#">Contact</a>
+          <a href="#">Support</a>
+          <a href="#">Legal</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
