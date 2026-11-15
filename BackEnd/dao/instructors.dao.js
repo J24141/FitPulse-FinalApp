@@ -7,4 +7,12 @@ const getAll = async () => {
   return rows;
 };
 
-module.exports = { getAll };
+const getById = async (id) => {
+  const [rows] = await db.query(
+    'SELECT id_instructor AS id, name FROM instructor WHERE id_instructor = ? LIMIT 1',
+    [id]
+  );
+  return rows[0] || null;
+};
+
+module.exports = { getAll, getById };

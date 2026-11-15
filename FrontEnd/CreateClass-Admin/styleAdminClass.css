@@ -8,6 +8,11 @@ body {
   margin: 0px;
   min-height: 100%;
 }
+
+[hidden] {
+  display: none !important;
+}
+
 /* a blue color as a generic focus style */
 button:focus-visible {
   outline: 2px solid #4a90e2 !important;
@@ -107,6 +112,24 @@ a {
   letter-spacing: 0;
   line-height: 35.2px;
   white-space: nowrap;
+}
+
+.crear-clase-admin .class-name-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 72px;
+  padding: 0 20px;
+  border: 1px solid #525252;
+  border-radius: 10px;
+  background: #fff;
+  color: #525252;
+  font: 500 24px "Inter-Medium", Helvetica, sans-serif;
+}
+
+.crear-clase-admin .class-name-input::placeholder {
+  color: #838383;
+  opacity: 1;
 }
 
 .crear-clase-admin .group-2 {
@@ -211,6 +234,66 @@ a {
   left: 1136px;
   width: 32px;
   height: 32px;
+}
+
+.crear-clase-admin .instructor-list {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 72px;
+  padding: 0 64px 0 20px;
+  appearance: none;
+  border: 1px solid #525252;
+  border-radius: 10px;
+  background: #fff;
+  color: #525252;
+  font: 500 20px "Inter-Medium", Helvetica, sans-serif;
+}
+
+.crear-clase-admin .instructor-list:disabled {
+  opacity: 1;
+}
+
+.crear-clase-admin .class-schedule-input {
+  position: absolute;
+  top: 11px;
+  right: 12px;
+  width: 390px;
+  height: 50px;
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: #525252;
+  font: 500 18px "Inter-Medium", Helvetica, sans-serif;
+}
+
+.crear-clase-admin .admin-create-button {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 72px;
+  border: 1px solid #525252;
+  border-radius: 10px;
+  background: #ff7b00;
+  color: #fff;
+  font: 500 24px "Inter-Medium", Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.crear-clase-admin .admin-create-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.crear-clase-admin .instructors-status {
+  position: absolute;
+  top: calc(var(--card-top) + 565px);
+  left: 50%;
+  width: min(624px, calc(100% - 72px));
+  transform: translateX(-50%);
+  color: #525252;
+  font: 500 14px/1.4 "Inter-Medium", Helvetica, sans-serif;
+  text-align: center;
 }
 
 /* Responsive layout */
@@ -397,5 +480,25 @@ a {
 
   .crear-clase-admin .text-wrapper-3 {
     font-size: 20px;
+  }
+
+  .crear-clase-admin .instructor-list {
+    height: 72px;
+    font-size: 16px;
+  }
+
+  .crear-clase-admin .instructors-status {
+    top: calc(var(--card-top) + 500px);
+    width: calc(100% - 40px);
+    font-size: 12px;
+  }
+
+  .crear-clase-admin .class-name-input {
+    font-size: 16px;
+  }
+
+  .crear-clase-admin .class-schedule-input {
+    width: calc(100% - 170px);
+    font-size: 13px;
   }
 }

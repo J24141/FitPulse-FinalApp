@@ -468,6 +468,34 @@ ul {
   outline-offset: 1px;
 }
 
+.detalle__dato {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--gris-texto);
+}
+
+.class-status {
+  margin-top: 12px;
+  color: #a33a00;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.review-readonly-note {
+  display: block;
+  width: fit-content;
+  height: auto;
+  min-height: 46px;
+  padding: 12px 20px;
+  line-height: 1.4;
+}
+
+.resumen__stats[hidden],
+.lista-resenas[hidden] {
+  display: none;
+}
+
 /* ===== Footer ===== */
 .footer {
   margin-top: clamp(64px, 12vw, 215px);

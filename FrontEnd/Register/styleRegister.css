@@ -464,3 +464,184 @@ a {
     font-size: 18px;
   }
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.register {
+  --card-top: max(24px, calc((100vh - 744px) / 2));
+  height: max(100vh, calc(var(--card-top) + 770px));
+}
+
+.register .div {
+  height: 744px;
+}
+
+.register-form {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.register-form .group,
+.register-form .group-2,
+.register-form .group-3,
+.register-form .group-wrapper,
+.register-form .terms-consent,
+.register-form .register-status {
+  pointer-events: auto;
+}
+
+.register-input {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 72px;
+  padding: 0 20px;
+  border: 1px solid #525252;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  font: 500 20px "Inter-Medium", Helvetica, sans-serif;
+}
+
+.register-input::placeholder {
+  color: #838383;
+  opacity: 1;
+}
+
+.register-input:focus-visible,
+.register-submit:focus-visible,
+.terms-consent input:focus-visible {
+  outline: 3px solid rgba(255, 123, 0, 0.65);
+  outline-offset: 2px;
+}
+
+.terms-consent {
+  position: absolute;
+  top: calc(var(--card-top) + 451px);
+  left: calc(50% - 335px);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  width: min(476px, calc(100% - 88px));
+  color: #000;
+  font: 500 20px/1.35 "Inter-Medium", Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.terms-consent input {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  margin: 8px 0 0;
+  accent-color: #ff7b00;
+  cursor: pointer;
+}
+
+.terms-highlight {
+  color: #ff7b00;
+}
+
+.register-submit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 72px;
+  border: 1px solid #525252;
+  border-radius: 10px;
+  background: #ff7b00;
+  color: #fff;
+  font: 500 24px "Inter-Medium", Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.register-submit:hover {
+  background: #e66f00;
+}
+
+.register-status {
+  position: absolute;
+  top: calc(var(--card-top) + 644px);
+  left: 50%;
+  width: min(624px, calc(100% - 72px));
+  transform: translateX(-50%);
+  color: #7a2c00;
+  font: 500 14px/1.4 "Inter-Medium", Helvetica, sans-serif;
+  text-align: center;
+}
+
+.register .text-wrapper {
+  top: calc(var(--card-top) + 690px);
+}
+
+.register .group-wrapper {
+  top: calc(var(--card-top) + 566px);
+}
+
+.register-submit:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+@media (max-width: 600px) {
+  .register {
+    --card-top: 16px;
+    height: max(100vh, 700px);
+  }
+
+  .register .div {
+    height: 660px;
+  }
+
+  .register-input {
+    height: 60px;
+    font-size: clamp(16px, 4.5vw, 20px);
+  }
+
+  .terms-consent {
+    top: calc(var(--card-top) + 370px);
+    left: 24px;
+    gap: 10px;
+    width: calc(100% - 48px);
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .terms-consent input {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+  }
+
+  .register-submit {
+    height: 60px;
+    font-size: 20px;
+  }
+
+  .register .group-wrapper {
+    top: calc(var(--card-top) + 486px);
+  }
+
+  .register-status {
+    top: calc(var(--card-top) + 552px);
+    width: calc(100% - 40px);
+    font-size: 12px;
+  }
+
+  .register .text-wrapper {
+    top: calc(var(--card-top) + 604px);
+  }
+}

@@ -34,29 +34,21 @@
 
   <!-- ===== Carrito ===== -->
   <main class="carrito">
-    <form class="carrito__card" action="../ChargePage/indexCharge.html" method="get">
+    <form class="carrito__card" id="cart-form">
       <h1 class="carrito__title">CARRITO DE COMPRAS</h1>
 
       <div class="carrito__grid">
         <!-- Columna izquierda: detalle de la clase -->
-        <div class="campo" id="clase">CLASE YOGA</div>
-        <div class="campo" id="horario">LUNES 3 &nbsp; 6:00 AM - 6:45 AM</div>
-        <div class="campo" id="instructor">INSTRUCTOR(A): ERIKA RIVERA</div>
+        <div class="campo" id="clase">Cargando clase...</div>
+        <div class="campo" id="horario">Cargando horario...</div>
+        <div class="campo" id="instructor">Cargando instructor...</div>
 
-        <!-- Columna derecha: pago -->
-        <div class="select-wrap">
-          <label class="visually-hidden" for="metodo-pago">Método de pago</label>
-          <select class="campo campo--select" id="metodo-pago" name="metodo_pago" required>
-            <option value="" disabled selected>METODO DE PAGO</option>
-            <option value="tarjeta-credito">TARJETA DE CRÉDITO</option>
-            <option value="tarjeta-debito">TARJETA DÉBITO</option>
-            <option value="pse">PSE</option>
-            <option value="nequi">NEQUI</option>
-          </select>
-        </div>
-        <div class="campo" id="precio">$ 55.000 COP</div>
-        <button class="boton-pagar" type="submit">PAGAR</button>
+        <!-- Inscripción gratuita: no se procesa ningún pago -->
+        <div class="campo">INSCRIPCIÓN GRATUITA</div>
+        <div class="campo" id="precio">Cargando precio...</div>
+        <button class="boton-pagar" id="checkout-button" type="submit" disabled>INSCRIBIRME GRATIS</button>
       </div>
+      <p class="cart-status" id="cart-status" role="status"></p>
     </form>
   </main>
 
@@ -100,5 +92,7 @@
     </div>
   </footer>
 
+  <script src="../js/api.js" defer></script>
+  <script src="cart.js" defer></script>
 </body>
 </html>

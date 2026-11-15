@@ -22,7 +22,7 @@
           </a>
         </header>
 
-        <form class="login__form" action="#" method="post">
+        <form class="login__form" id="login-form">
           <label class="visually-hidden" for="email">Correo electrónico</label>
           <input
             class="login__input"
@@ -31,6 +31,7 @@
             name="email"
             placeholder="CORREO ELECTRÓNICO"
             autocomplete="email"
+            maxlength="150"
             required
           />
 
@@ -42,10 +43,12 @@
             name="password"
             placeholder="CONTRASEÑA"
             autocomplete="current-password"
+            maxlength="128"
             required
           />
 
           <button class="login__button" type="submit">INGRESAR</button>
+          <p class="login__status" id="login-status" role="status" aria-live="polite"></p>
         </form>
 
         <nav class="login__links">
@@ -56,5 +59,7 @@
         </nav>
       </div>
     </main>
+    <script src="../js/api.js" defer></script>
+    <script src="login.js" defer></script>
   </body>
 </html>

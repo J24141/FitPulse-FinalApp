@@ -44,20 +44,21 @@
       <div class="detalle__info">
         <div class="detalle__titulo-fila">
           <h1 class="detalle__titulo">SPINNING</h1>
-          <p class="detalle__precio">$ 65.000 COP</p>
-          <p class="detalle__cupos" aria-label="Cupos: 5 de 15">
+          <p class="detalle__precio">Cargando...</p>
+          <p class="detalle__cupos" aria-label="Capacidad máxima de la clase">
             <img src="../img/People.png" alt="" width="48" height="48">
-            <span>5/15</span>
+            <span id="class-capacity">Cargando capacidad...</span>
           </p>
         </div>
 
-        <p class="detalle__descripcion">
-          Una experiencia de alta energía que, al ritmo de la música y luces dinámicas, te impulsa a desafiar tus límites mientras mejoras tu resistencia cardiovascular. Es la opción ideal para liberar estrés, quemar calorías de forma eficiente y fortalecer tus piernas y abdomen en una comunidad vibrante que te acompaña en cada pedalada.
-        </p>
+        <p class="detalle__descripcion">Cargando información de la clase...</p>
+        <p class="detalle__dato" id="class-instructor">Cargando instructor...</p>
+        <p class="detalle__dato" id="class-schedule">Cargando horario...</p>
+        <p class="class-status" id="class-status" role="status"></p>
       </div>
 
       <aside class="resumen" aria-label="Resumen de la clase">
-        <ul class="resumen__stats">
+        <ul class="resumen__stats" hidden>
           <li class="stat">
             <img class="stat__icono stat__icono--espejo" src="../img/Triceps.png" alt="" width="49" height="49">
             <span class="stat__valor">50%</span>
@@ -75,10 +76,10 @@
           </li>
         </ul>
 
-        <h2 class="resumen__titulo">PROMEDIO DE GASTO DE CALORÍAS</h2>
-        <p class="resumen__nota">*Caminar 30 minutos gasta 150 calorías</p>
+        <h2 class="resumen__titulo">ESTADÍSTICAS NO DISPONIBLES</h2>
+        <p class="resumen__nota">La base de datos aún no registra métricas de entrenamiento.</p>
 
-        <a class="boton-carrito" href="../ShopPurshare/indexCarrito.html">AGREGAR AL CARRITO</a>
+        <a class="boton-carrito" aria-disabled="true">AGREGAR AL CARRITO</a>
       </aside>
     </section>
 
@@ -110,7 +111,7 @@
         </li>
       </ul>
 
-      <div class="lista-resenas">
+      <div class="lista-resenas" hidden>
 
         <article class="resena">
           <header class="resena__top">
@@ -296,10 +297,9 @@
 
       </div>
 
-      <form class="nueva-resena" action="#" method="post">
-        <label class="visually-hidden" for="nueva-resena">Escribir reseña</label>
-        <input class="nueva-resena__input" type="text" id="nueva-resena" name="resena" placeholder="Escribir Reseña">
-      </form>
+      <p class="nueva-resena nueva-resena__input review-readonly-note">
+        Las reseñas son de solo lectura; la API aún no permite publicar reseñas.
+      </p>
     </section>
 
   </main>
@@ -344,5 +344,8 @@
     </div>
   </footer>
 
+  <script src="../js/api.js" defer></script>
+  <script src="../js/class-detail.js" defer></script>
+  <script src="spinning.js" defer></script>
 </body>
 </html>

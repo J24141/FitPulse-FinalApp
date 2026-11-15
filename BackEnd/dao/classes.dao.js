@@ -25,6 +25,16 @@ const getById = async (id) => {
   return rows[0] || null;
 };
 
+const create = async ({ name, schedule, instructorId }) => {
+  const [result] = await db.query(
+    `INSERT INTO \`class\`
+       (name, schedule, price, description, category, maximum_limit, \`maximum-limit\`, instructor_id_instructor)
+     VALUES (?, ?, 0, '', ?, 20, 20, ?)`,
+    [name, schedule, name, instructorId]
+  );
+  return { id: result.insertId };
+};
+
 const getReviews = async (classId) => {
   const [rows] = await db.query(
     `SELECT
@@ -43,4 +53,4 @@ const getReviews = async (classId) => {
   return rows;
 };
 
-module.exports = { getAll, getById, getReviews };
+module.exports = { getAll, getById, create, getReviews };

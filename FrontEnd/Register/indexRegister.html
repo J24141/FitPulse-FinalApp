@@ -1,51 +1,56 @@
 <!doctype html>
-<html>
+<html lang="es">
   <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
+    <title>Crear cuenta | FitPulse</title>
     <link rel="stylesheet" href="styleRegister.css" />
   </head>
   <body>
-    <div class="register">
-      <img class="rectangle" src="../img/BackBanner2.png" />
-      <div class="div"></div>
-      <a class="text-wrapper" href="../Log-In/indexLog.html">Iniciar Sesión</a>
-      <div class="group">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-2">NOMBRE</div>
-      </div>
-      <div class="text-wrapper-3">CREAR CUENTA</div>
-      <div class="group-2">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-2">APELLIDO</div>
-      </div>
-      <div class="group-3">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-2">TELÉFONO</div>
-      </div>
-      <div class="group-4">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-2">CORREO ELECTRÓNICO</div>
-      </div>
-      <div class="group-5">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper-2">CONTRASEÑA</div>
-      </div>
-      <div class="group-wrapper">
-        <div class="group-6">
-          <div class="rectangle-3"></div>
-          <div class="text-wrapper-4">REGISTRARSE</div>
+    <main class="register">
+      <img class="rectangle" src="../img/BackBanner2.png" alt="" />
+      <div class="div" aria-hidden="true"></div>
+      <a class="text-wrapper" href="../Log-In/indexLog.html">Iniciar sesión</a>
+      <h1 class="text-wrapper-3">CREAR CUENTA</h1>
+
+      <form class="register-form" id="register-form">
+        <div class="group">
+          <label class="visually-hidden" for="register-name">Nombre completo</label>
+          <input class="register-input" id="register-name" name="name" type="text"
+            placeholder="NOMBRE COMPLETO" autocomplete="name" maxlength="100" required />
         </div>
-      </div>
-      <p class="al-seleccionar-esta">
-        <span class="span">Al seleccionar esta casilla acepto los </span>
-        <span class="text-wrapper-5">términos y condiciones</span>
-        <span class="span"> y </span>
-        <span class="text-wrapper-5">políticas de tratamiento de datos</span>
-        <span class="span"> FITPULSE</span>
-      </p>
-      <div class="rectangle-4"></div>
-      <img class="img" src="../img/LogoFitpulse.png" />
-    </div>
+        <div class="group-2">
+          <label class="visually-hidden" for="register-email">Correo electrónico</label>
+          <input class="register-input" id="register-email" name="email" type="email"
+            placeholder="CORREO ELECTRÓNICO" autocomplete="email" maxlength="150" required />
+        </div>
+        <div class="group-3">
+          <label class="visually-hidden" for="register-password">Contraseña</label>
+          <input class="register-input" id="register-password" name="password" type="password"
+            placeholder="CONTRASEÑA" autocomplete="new-password" minlength="8" maxlength="128" required />
+        </div>
+
+        <label class="terms-consent" for="register-terms">
+          <input id="register-terms" name="terms" type="checkbox" required />
+          <span>
+            Al seleccionar esta casilla acepto los <span class="terms-highlight">términos y condiciones</span>
+            y las <span class="terms-highlight">políticas de tratamiento de datos</span> de FitPulse.
+          </span>
+        </label>
+
+        <div class="group-wrapper">
+          <div class="group-6">
+            <button class="register-submit" type="submit">REGISTRARSE</button>
+          </div>
+        </div>
+        <p class="register-status" id="register-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <a class="img-link" href="../Home/indexHome.html" aria-label="FitPulse, ir al inicio">
+        <img class="img" src="../img/LogoFitpulse.png" alt="FitPulse" />
+      </a>
+    </main>
+    <script src="../js/api.js" defer></script>
+    <script src="register.js" defer></script>
   </body>
 </html>

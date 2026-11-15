@@ -1,0 +1,1 @@
+window.FitPulseClassDetail.init("CrossFit");

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Usuario (Admin) | FitPulse</title>
+  <title>Mi cuenta | FitPulse</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
       <a class="header__cart" href="../ShopPurshare/indexCarrito.html" aria-label="Carrito de compras">
         <img src="../img/Shopping%20Cart.png" alt="">
       </a>
-      <a class="header__avatar" href="../MyAccount-Admin/indexAdmin.html" aria-label="Mi cuenta">
+      <a class="header__avatar" href="indexUser.html" aria-label="Mi cuenta">
         <img src="../img/UserImg.png" alt="" width="89" height="89">
       </a>
     </div>
@@ -43,44 +43,24 @@
     <section class="perfil">
       <img class="perfil__foto" src="../img/UserImg.png" alt="Foto de perfil" width="216" height="216">
       <div class="perfil__texto">
-        <h1 class="perfil__nombre">LUIS GABRIEL CASTIBLANCO FERRERO</h1>
-        <p class="perfil__email">luiscast123@gmail.com · Registrado hace 3 meses</p>
-        <button class="perfil__eliminar" type="button">ELIMINAR CUENTA</button>
+        <h1 class="perfil__nombre" id="account-user-name">Mi cuenta</h1>
+        <p class="perfil__email" id="account-user-email"></p>
+        <a class="perfil__salir" href="../Log-In/indexLog.html" data-sign-out>CERRAR SESIÓN</a>
+        <a class="perfil__volver" id="admin-return" href="../MyAccount-Admin/indexAdmin.html" hidden>
+          VOLVER AL PANEL ADMIN
+        </a>
       </div>
     </section>
 
-    <!-- ===== Clases compradas ===== -->
-    <section class="seccion" aria-labelledby="titulo-compradas">
-      <h2 class="seccion__titulo" id="titulo-compradas">CLASES COMPRADAS</h2>
-      <div class="clases">
-        <article class="clase">
-          <header class="clase__top">
-            <h3 class="clase__nombre">SPINNING</h3>
-            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
-              <img src="../img/People.png" alt="" width="20" height="20">
-              <span>5/15</span>
-            </p>
-          </header>
-          <p class="clase__instructor">JOSÉ BERNAL<br>MORENO</p>
-          <p class="clase__horario">06:00 AM - 06:45 AM</p>
-        </article>
-
-        <article class="clase">
-          <header class="clase__top">
-            <h3 class="clase__nombre">SPINNING</h3>
-            <p class="clase__cupos" aria-label="Cupos: 5 de 15">
-              <img src="../img/People.png" alt="" width="20" height="20">
-              <span>5/15</span>
-            </p>
-          </header>
-          <p class="clase__instructor">ERIKA RIVERA<br>ROJAS</p>
-          <p class="clase__horario">07:00 AM - 07:45 AM</p>
-        </article>
-      </div>
+    <!-- ===== Mis clases ===== -->
+    <section class="seccion" aria-labelledby="titulo-inscripciones">
+      <h2 class="seccion__titulo" id="titulo-inscripciones">MIS CLASES · INSCRIPCIÓN GRATUITA</h2>
+      <p class="enrollments-status" id="enrollments-status" role="status">Cargando tus clases...</p>
+      <div class="clases" id="user-enrollments"></div>
     </section>
 
     <!-- ===== Clases pasadas ===== -->
-    <section class="seccion" aria-labelledby="titulo-pasadas">
+    <section class="seccion" aria-labelledby="titulo-pasadas" hidden>
       <h2 class="seccion__titulo" id="titulo-pasadas">CLASES PASADAS</h2>
       <div class="clases clases--pasadas">
         <article class="clase clase--pasada">
@@ -182,7 +162,7 @@
     </section>
 
     <!-- ===== Progreso ===== -->
-    <section class="seccion" aria-labelledby="titulo-progreso">
+    <section class="seccion" aria-labelledby="titulo-progreso" hidden>
       <h2 class="seccion__titulo" id="titulo-progreso">PROGRESO</h2>
       <ul class="progreso">
         <li class="logro">
@@ -265,6 +245,9 @@
       </div>
     </div>
   </footer>
-
+  <script src="../js/api.js" defer></script>
+  <script src="../js/session.js" defer></script>
+  <script src="accountUser.js" defer></script>
+  <script src="enrollments.js" defer></script>
 </body>
 </html>

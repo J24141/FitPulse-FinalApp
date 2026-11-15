@@ -5,35 +5,43 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styleAdminClass.css" />
   </head>
-  <body>
-    <div class="crear-clase-admin">
+  <body data-admin-only-page hidden>
+    <form class="crear-clase-admin" id="create-class-form">
       <img class="rectangle" src="../img/BackBanner1.png" />
       <div class="div"></div>
       <div class="group">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper">NOMBRE DE CLASE</div>
+        <label class="visually-hidden" for="class-name">Nombre de clase</label>
+        <input id="class-name" name="name" class="class-name-input" type="text"
+               placeholder="NOMBRE DE CLASE" maxlength="45" required />
       </div>
       <div class="text-wrapper-2">CREAR CLASE</div>
       <div class="group-2">
-        <div class="rectangle-2"></div>
-        <div class="text-wrapper">INSTRUCTOR</div>
+        <label class="visually-hidden" for="instructor-list">Instructores registrados</label>
+        <select id="instructor-list" name="instructorId" class="instructor-list" required disabled>
+          <option value="">Cargando instructores...</option>
+        </select>
       </div>
       <div class="group-3">
         <div class="rectangle-2"></div>
-        <div class="text-wrapper">HORARIO</div>
+        <label class="text-wrapper" for="class-schedule">HORARIO</label>
+        <input id="class-schedule" name="schedule" class="class-schedule-input"
+               type="datetime-local" required />
       </div>
       <div class="group-wrapper">
         <div class="group-4">
-          <div class="rectangle-3"></div>
-          <div class="text-wrapper-3">CREAR</div>
+          <button class="admin-create-button" type="submit" disabled>CREAR</button>
         </div>
       </div>
+      <p class="instructors-status" id="instructors-status" role="status">Consultando instructores...</p>
       <a class="img-link" href="../Home/indexHome.html" aria-label="FitPulse, ir al inicio">
         <img src="../img/LogoFitpulse.png" alt="FitPulse" />
       </a>
       <img class="drop-down-arrow" src="../img/DropDownArrow.png" />
       <img class="drop-down-arrow-2" src="../img/DropDownArrow.png" />
       <img class="drop-down-arrow-3" src="../img/DropDownArrow.png" />
-    </div>
+    </form>
+    <script src="../js/api.js" defer></script>
+    <script src="../js/session.js" defer></script>
+    <script src="instructors.js" defer></script>
   </body>
 </html>

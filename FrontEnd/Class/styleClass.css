@@ -29,6 +29,10 @@ body {
   background: var(--blanco);
 }
 
+[hidden] {
+  display: none !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -541,4 +545,43 @@ a.clase:focus-visible {
   .boton-agregar {
     font-size: 15px;
   }
+}
+
+.semana {
+  display: block;
+  width: auto;
+}
+
+.semana .dia__titulo {
+  max-width: none;
+  padding: 8px 12px;
+  height: auto;
+  text-align: left;
+}
+
+.semana .dia__clases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.semana .clase {
+  width: 100%;
+  height: auto;
+  min-height: 144px;
+}
+
+.semana .clase__instructor {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.semana .clase__horario {
+  width: auto;
+  height: auto;
+  min-height: 22px;
+  margin-left: 0;
+  padding: 4px 8px;
+  line-height: 1.3;
 }

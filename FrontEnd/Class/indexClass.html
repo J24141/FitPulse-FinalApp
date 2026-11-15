@@ -38,105 +38,18 @@
     <div class="encabezado">
       <h1 class="encabezado__titulo">CLASES DISPONIBLES</h1>
       <!-- Solo para administradores -->
-      <a class="boton-agregar" href="../CreateClass-Admin/indexAdminClass.html">AGREGAR CLASES</a>
+      <a class="boton-agregar" href="../CreateClass-Admin/indexAdminClass.html" data-admin-only hidden>AGREGAR CLASES</a>
     </div>
 
     <p class="descripcion">Estas son las clases disponibles en FitPulse, puedes filtrar la clase por tus intereses para que puedas ver sus horarios.</p>
 
     <!-- ===== Horario semanal ===== -->
+    <p id="classes-status" class="descripcion" role="status">Cargando clases...</p>
     <div class="semana-wrap">
-      <div class="semana">
-        <section class="dia">
-          <h2 class="dia__titulo">Lun. 22</h2>
-          <div class="dia__clases">
-          <a class="clase" href="../Spinning/indexSpinning.html">
-            <span class="clase__top">
-              <span class="clase__nombre">SPINNING</span>
-              <span class="clase__cupos" aria-label="Cupos: 5 de 15">
-                <img src="../img/People.png" alt="" width="20" height="20">
-                <span>5/15</span>
-              </span>
-            </span>
-            <span class="clase__instructor">JOSÉ BERNAL<br>MORENO</span>
-            <span class="clase__horario">06:00 AM - 07:45 AM</span>
-          </a>
-          </div>
-        </section>
-        <section class="dia">
-          <h2 class="dia__titulo">Mar. 22</h2>
-          <div class="dia__clases">
-          <a class="clase" href="../Yoga/indexYoga.html">
-            <span class="clase__top">
-              <span class="clase__nombre">YOGA</span>
-              <span class="clase__cupos" aria-label="Cupos: 5 de 15">
-                <img src="../img/People.png" alt="" width="20" height="20">
-                <span>5/15</span>
-              </span>
-            </span>
-            <span class="clase__instructor">ERIKA RIVERA<br>ROJAS</span>
-            <span class="clase__horario">10:00 AM - 11:45 AM</span>
-          </a>
-          </div>
-        </section>
-        <section class="dia">
-          <h2 class="dia__titulo">Mié. 22</h2>
-          <div class="dia__clases">
-          <a class="clase" href="../CrossFit/indexCross.html">
-            <span class="clase__top">
-              <span class="clase__nombre">CROSSFIT</span>
-              <span class="clase__cupos" aria-label="Cupos: 5 de 15">
-                <img src="../img/People.png" alt="" width="20" height="20">
-                <span>5/15</span>
-              </span>
-            </span>
-            <span class="clase__instructor">LUIS AGUILAR<br>FERRERO</span>
-            <span class="clase__horario">03:00 PM - 04:45 PM</span>
-          </a>
-          </div>
-        </section>
-        <section class="dia">
-          <h2 class="dia__titulo">Jue. 22</h2>
-          <div class="dia__clases">
-          <a class="clase" href="../Spinning/indexSpinning.html">
-            <span class="clase__top">
-              <span class="clase__nombre">SPINNING</span>
-              <span class="clase__cupos" aria-label="Cupos: 5 de 15">
-                <img src="../img/People.png" alt="" width="20" height="20">
-                <span>5/15</span>
-              </span>
-            </span>
-            <span class="clase__instructor">JOSÉ BERNAL<br>MORENO</span>
-            <span class="clase__horario">06:00 PM - 07:45 PM</span>
-          </a>
-          </div>
-        </section>
-        <section class="dia dia--hoy">
-          <h2 class="dia__titulo" aria-current="date">Vie. 21</h2>
-          <div class="dia__clases">
-          <a class="clase" href="../Yoga/indexYoga.html">
-            <span class="clase__top">
-              <span class="clase__nombre">YOGA</span>
-              <span class="clase__cupos" aria-label="Cupos: 5 de 15">
-                <img src="../img/People.png" alt="" width="20" height="20">
-                <span>5/15</span>
-              </span>
-            </span>
-            <span class="clase__instructor">ERIKA RIVERA<br>ROJAS</span>
-            <span class="clase__horario">09:00 PM - 10:45 PM</span>
-          </a>
-          </div>
-        </section>
-        <section class="dia dia--vacio">
-          <h2 class="dia__titulo">Sab. 22</h2>
-          <div class="dia__clases">
-          </div>
-        </section>
-        <section class="dia dia--vacio">
-          <h2 class="dia__titulo">Dom. 22</h2>
-          <div class="dia__clases">
-          </div>
-        </section>
-      </div>
+      <section class="semana" aria-label="Clases disponibles">
+        <h2 class="dia__titulo">CLASES REGISTRADAS</h2>
+        <div class="dia__clases" id="classes-list"></div>
+      </section>
     </div>
 
   </main>
@@ -181,5 +94,8 @@
     </div>
   </footer>
 
+  <script src="../js/api.js" defer></script>
+  <script src="../js/session.js" defer></script>
+  <script src="classes.js" defer></script>
 </body>
 </html>

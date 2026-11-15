@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle de clase | FitPulse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Yoga/styleYoga.css">
+</head>
+<body>
+  <header class="header">
+    <a class="header__logo" href="../Home/indexHome.html" aria-label="FitPulse, ir al inicio">
+      <img src="../img/LogoFitpulse.png" alt="FitPulse">
+    </a>
+    <nav class="header__nav" aria-label="Principal">
+      <a href="indexClass.html">CLASES</a>
+      <a href="#">BLOG</a>
+    </nav>
+    <div class="header__actions">
+      <a class="header__cart" href="../ShopPurshare/indexCarrito.html" aria-label="Carrito de compras">
+        <img src="../img/Shopping%20Cart.png" alt="">
+      </a>
+      <a class="header__avatar" href="../MyAccount/indexAccount.html" aria-label="Mi cuenta">
+        <img src="../img/UserImg.png" alt="" width="89" height="89">
+      </a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <img src="../img/BackBanner1.png" alt="Entrenamiento FitPulse">
+  </div>
+
+  <main class="contenido">
+    <section class="detalle">
+      <div class="detalle__info">
+        <div class="detalle__titulo-fila">
+          <h1 class="detalle__titulo">CLASE</h1>
+          <p class="detalle__precio">Cargando...</p>
+          <p class="detalle__cupos" aria-label="Capacidad máxima de la clase">
+            <img src="../img/People.png" alt="" width="48" height="48">
+            <span id="class-capacity">Cargando capacidad...</span>
+          </p>
+        </div>
+        <p class="detalle__descripcion">Cargando información de la clase...</p>
+        <p class="detalle__dato" id="class-instructor">Cargando instructor...</p>
+        <p class="detalle__dato" id="class-schedule">Cargando horario...</p>
+        <p class="class-status" id="class-status" role="status"></p>
+      </div>
+
+      <aside class="resumen" aria-label="Resumen de la clase">
+        <h2 class="resumen__titulo">INFORMACIÓN DE LA CLASE</h2>
+        <p class="resumen__nota">La capacidad mostrada es el máximo registrado.</p>
+        <a class="boton-carrito" aria-disabled="true">INSCRIBIRME GRATIS</a>
+      </aside>
+    </section>
+
+    <section class="resenas" aria-labelledby="resenas-titulo">
+      <h2 class="resenas__titulo" id="resenas-titulo">RESEÑAS</h2>
+      <ul class="barras">
+        <li class="barra"><span class="barra__nivel">5</span><span class="barra__pista"><span class="barra__relleno" style="width: 0%"></span></span></li>
+        <li class="barra"><span class="barra__nivel">4</span><span class="barra__pista"><span class="barra__relleno" style="width: 0%"></span></span></li>
+        <li class="barra"><span class="barra__nivel">3</span><span class="barra__pista"><span class="barra__relleno" style="width: 0%"></span></span></li>
+        <li class="barra"><span class="barra__nivel">2</span><span class="barra__pista"><span class="barra__relleno" style="width: 0%"></span></span></li>
+        <li class="barra"><span class="barra__nivel">1</span><span class="barra__pista"><span class="barra__relleno" style="width: 0%"></span></span></li>
+      </ul>
+      <div class="lista-resenas"></div>
+      <p class="nueva-resena nueva-resena__input review-readonly-note">
+        Las reseñas son de solo lectura; la API aún no permite publicar reseñas.
+      </p>
+    </section>
+  </main>
+
+  <script src="../js/api.js" defer></script>
+  <script src="../js/class-detail.js" defer></script>
+  <script src="detailClass.js" defer></script>
+</body>
+</html>
