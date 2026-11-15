@@ -8,7 +8,7 @@ body {
   margin: 0px;
   min-height: 100%;
 }
-/* a blue color as a generic focus style */
+
 button:focus-visible {
   outline: 2px solid #4a90e2 !important;
   outline: -webkit-focus-ring-color auto 5px !important;
@@ -16,19 +16,19 @@ button:focus-visible {
 a {
   text-decoration: none;
 }
-/* @FONTWARNING[{"type": "restricted", "family": "Inter-Regular", "weight": "400", "style": "normal", "allowsCrossOrigin": false}] */
+
 
 @font-face {
   font-family: "Inter-Regular";
   src: local("Inter-Regular");
 }
-/* @FONTWARNING[{"type": "restricted", "family": "Inter-Medium", "weight": "500", "style": "normal", "allowsCrossOrigin": false}] */
+
 
 @font-face {
   font-family: "Inter-Medium";
   src: local("Inter-Medium");
 }
-/* @FONTWARNING[{"type": "restricted", "family": "Inter-Black", "weight": "900", "style": "normal", "allowsCrossOrigin": false}] */
+
 
 @font-face {
   font-family: "Inter-Black";
@@ -248,7 +248,7 @@ a {
   object-fit: cover;
 }
 
-/* Responsive layout */
+
 .register {
   --card-top: max(24px, calc((100vh - 904px) / 2));
   width: 100%;

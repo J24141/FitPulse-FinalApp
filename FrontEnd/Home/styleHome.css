@@ -36,7 +36,7 @@ a {
   src: local("Inter-Medium");
 }
 
-/* Page layout */
+
 .home {
   position: relative;
   display: flex;
@@ -46,7 +46,7 @@ a {
   background-color: #fff;
 }
 
-/* Fixed navigation */
+
 .home .group {
   position: fixed;
   z-index: 3;
@@ -139,7 +139,7 @@ a {
   object-fit: cover;
 }
 
-/* Hero image */
+
 .home .img {
   display: block;
   width: 100%;
@@ -148,7 +148,7 @@ a {
   object-fit: cover;
 }
 
-/* Footer */
+
 .home .container {
   z-index: 2;
   display: flex;
@@ -263,7 +263,7 @@ a {
   white-space: nowrap;
 }
 
-/* Tablet and mobile layouts */
+
 @media (max-width: 900px) {
   .home .div {
     padding: 0 24px;
