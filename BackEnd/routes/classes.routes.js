@@ -91,6 +91,54 @@ router.get('/:id/reviews', async (req, res) => {
   return res.json(reviews);
 });
 
+router.post('/:id/reviews', requireSession, async (req, res, next) => {
+  if (req.authenticatedUser.role !== 'user') {
+    return res.status(403).json({ error: 'Only user accounts can write reviews.' });
+  }
+
+  const classId = parsePositiveId(req.params.id);
+  if (!classId) {
+    return res.status(400).json({ error: 'Class id must be a positive integer.' });
+  }
+
+  const rating = Number(req.body && req.body.rating);
+  const comment = typeof (req.body && req.body.comment) === 'string'
+    ? req.body.comment.trim()
+    : '';
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+    return res.status(400).json({ error: 'Rating must be an integer between 1 and 5.' });
+  }
+  if (!comment || comment.length > 500) {
+    return res.status(400).json({ error: 'Comment is required and must be 500 characters or fewer.' });
+  }
+
+  try {
+    const classItem = await classesDao.getById(classId);
+    if (!classItem) {
+      return res.status(404).json({ error: 'Class not found.' });
+    }
+
+    const created = await classesDao.createReview({
+      userId: req.authenticatedUser.id,
+      classId,
+      rating,
+      comment
+    });
+    return res.status(201).json({
+      review: {
+        id: created.id,
+        rating,
+        comment,
+        tags: [],
+        userName: req.authenticatedUser.name,
+        createdAt: new Date().toISOString()
+      }
+    });
+  } catch (error) {
+    return next(error);
+  }
+});
+
 router.get('/:id', async (req, res) => {
   const id = parsePositiveId(req.params.id);
   if (!id) {

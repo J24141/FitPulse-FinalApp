@@ -154,9 +154,96 @@
 
   async function init(category) {
     const reviewList = document.querySelector(".lista-resenas");
+    const reviewForm = document.getElementById("review-form");
+    const reviewStatus = document.getElementById("review-status");
+    const reviewLoginLink = document.getElementById("review-login-link");
     const status = document.getElementById("class-status");
     const cartLink = document.querySelector(".boton-carrito");
     const classId = new URLSearchParams(global.location.search).get("id");
+    let loadedClassId = null;
+
+    if (reviewLoginLink) {
+      const returnTo = `${global.location.pathname}${global.location.search}${global.location.hash}`;
+      const loginUrl = new URL("../Log-In/indexLog.html", global.location.href);
+      loginUrl.searchParams.set("returnTo", returnTo);
+      reviewLoginLink.href = `${loginUrl.pathname}${loginUrl.search}`;
+      reviewLoginLink.hidden = Boolean(global.sessionStorage.getItem("fitpulse-session-token"));
+    }
+
+    if (reviewForm) {
+      reviewForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const token = global.sessionStorage.getItem("fitpulse-session-token");
+        if (!token) {
+          if (reviewStatus) {
+            reviewStatus.textContent = "Inicia sesión con una cuenta de usuario para publicar una reseña.";
+          }
+          if (reviewLoginLink) {
+            reviewLoginLink.hidden = false;
+          }
+          return;
+        }
+        if (!loadedClassId) {
+          if (reviewStatus) {
+            reviewStatus.textContent = "Espera a que termine de cargar la información de la clase.";
+          }
+          return;
+        }
+
+        const comment = reviewForm.elements.namedItem("comment").value.trim();
+        if (!comment) {
+          if (reviewStatus) {
+            reviewStatus.textContent = "Escribe un comentario antes de publicar la reseña.";
+          }
+          return;
+        }
+
+        const submitButton = reviewForm.querySelector('button[type="submit"]');
+        if (submitButton) {
+          submitButton.disabled = true;
+        }
+        if (reviewStatus) {
+          reviewStatus.textContent = "Publicando reseña...";
+        }
+
+        try {
+          await api.createReview(loadedClassId, {
+            rating: Number(reviewForm.elements.namedItem("rating").value),
+            comment
+          }, token);
+          reviewForm.reset();
+          if (reviewStatus) {
+            reviewStatus.textContent = "Tu reseña se publicó correctamente.";
+          }
+          try {
+            const reviews = await api.getReviews(loadedClassId);
+            renderReviewSummary(reviews);
+            if (reviewList) {
+              reviewList.replaceChildren(...reviews.map(renderReview));
+            }
+          } catch (error) {
+            if (reviewStatus) {
+              reviewStatus.textContent = "La reseña se publicó, pero no se pudo actualizar la lista.";
+            }
+            console.error("No se pudo actualizar la lista de reseñas:", error);
+          }
+        } catch (error) {
+          if (reviewStatus) {
+            reviewStatus.textContent = error.message;
+          }
+          if (error.status === 401 || error.status === 403) {
+            if (reviewLoginLink) {
+              reviewLoginLink.hidden = false;
+            }
+          }
+          console.error("No se pudo publicar la reseña:", error);
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+          }
+        }
+      });
+    }
 
     setText(".detalle__titulo", category.toUpperCase());
     setText(".detalle__precio", "Cargando...");
@@ -197,6 +284,7 @@
         throw new Error(`No hay una clase de ${category} registrada en la base de datos.`);
       }
 
+      loadedClassId = classItem.id;
       setText(".detalle__titulo", classItem.name || category.toUpperCase());
       setText(".detalle__precio", api.formatPrice(classItem.price));
       setText(

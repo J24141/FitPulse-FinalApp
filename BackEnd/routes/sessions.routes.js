@@ -1,6 +1,7 @@
 const express = require('express');
 const usersDao = require('../dao/users.dao');
 const enrollmentsDao = require('../dao/enrollments.dao');
+const personalRecordsDao = require('../dao/personal-records.dao');
 const { verifyPassword } = require('../utils/passwordHash');
 const { createSessionToken } = require('../utils/sessionToken');
 const { requireSession } = require('../middleware/sessionAuth');
@@ -11,6 +12,15 @@ router.get('/me/enrollments', requireSession, async (req, res, next) => {
   try {
     const enrollments = await enrollmentsDao.getForUser(req.authenticatedUser.id);
     return res.json({ enrollments });
+  } catch (error) {
+    return next(error);
+  }
+});
+
+router.get('/me/personal-records', requireSession, async (req, res, next) => {
+  try {
+    const records = await personalRecordsDao.getForUser(req.authenticatedUser.id);
+    return res.json({ records });
   } catch (error) {
     return next(error);
   }

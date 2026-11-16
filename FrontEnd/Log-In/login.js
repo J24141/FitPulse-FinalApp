@@ -21,16 +21,33 @@
       const pendingEnrollment = sessionStorage.getItem("fitpulse-pending-enrollment");
       if (session.user.role === "user" && /^[1-9]\d*$/.test(pendingEnrollment || "")) {
         sessionStorage.removeItem("fitpulse-pending-enrollment");
-        window.location.assign(
-          `../ShopPurshare/indexCarrito.html?classId=${encodeURIComponent(pendingEnrollment)}&enroll=1`
+        window.FitPulseNavigation.go(
+          `../ShopPurshare/indexCarrito.html?classId=${encodeURIComponent(pendingEnrollment)}&enroll=1`,
+          true
         );
         return;
       }
       sessionStorage.removeItem("fitpulse-pending-enrollment");
+      const returnTo = new URLSearchParams(window.location.search).get("returnTo");
+      if (returnTo && returnTo.startsWith("/")) {
+        const destination = new URL(returnTo, window.location.href);
+        const navigationScript = document.querySelector('script[src$="/js/navigation.js"]');
+        const appRoot = navigationScript
+          ? new URL("../", navigationScript.src)
+          : null;
+        if (
+          appRoot
+          && destination.origin === window.location.origin
+          && destination.pathname.startsWith(appRoot.pathname)
+        ) {
+          window.FitPulseNavigation.go(destination.href, true);
+          return;
+        }
+      }
       const accountPage = session.user.role === "admin"
         ? "../MyAccount-Admin/indexAdmin.html"
         : "../MyAccount-User/indexUser.html";
-      window.location.assign(accountPage);
+      window.FitPulseNavigation.go(accountPage, true);
     } catch (error) {
       status.textContent = error.message;
       console.error("No se pudo iniciar sesión:", error);

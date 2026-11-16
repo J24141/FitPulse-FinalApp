@@ -31,13 +31,13 @@
     ) {
       sessionStorage.removeItem("fitpulse-session-token");
       sessionStorage.removeItem("fitpulse-session-user");
-      window.location.replace("../Log-In/indexLog.html");
+      window.FitPulseNavigation.go("../Log-In/indexLog.html", true);
       return null;
     }
 
     if (selectedUserId !== null) {
       if (currentUser.role !== "admin") {
-        window.location.replace("../MyAccount-User/indexUser.html");
+        window.FitPulseNavigation.go("../MyAccount-User/indexUser.html", true);
         return null;
       }
       if (!/^[1-9]\d*$/.test(selectedUserId)) {
@@ -57,16 +57,38 @@
     }
 
     if (currentUser.role === "admin") {
-      window.location.replace("../MyAccount-Admin/indexAdmin.html");
+      window.FitPulseNavigation.go("../MyAccount-Admin/indexAdmin.html", true);
       return null;
     }
 
     showUser(currentUser);
     try {
       const { enrollments } = await api.getMyEnrollments(token);
-      return { user: currentUser, enrollments, isSupervising: false };
+      try {
+        const { records } = await api.getMyPersonalRecords(token);
+        return {
+          user: currentUser,
+          enrollments,
+          personalRecords: records,
+          isSupervising: false
+        };
+      } catch (error) {
+        return {
+          user: currentUser,
+          enrollments,
+          personalRecords: [],
+          personalRecordsError: error.message,
+          isSupervising: false
+        };
+      }
     } catch (error) {
-      return { user: currentUser, error: error.message, enrollments: [], isSupervising: false };
+      return {
+        user: currentUser,
+        error: error.message,
+        enrollments: [],
+        personalRecords: [],
+        isSupervising: false
+      };
     }
   }
 

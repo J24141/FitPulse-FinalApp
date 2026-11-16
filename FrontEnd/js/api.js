@@ -5,6 +5,14 @@
     || document.querySelector('meta[name="fitpulse-api-base"]')?.content
     || "http://localhost:5000/api/v1";
   const baseUrl = configuredBase.replace(/\/+$/, "");
+  const apiScriptUrl = new URL(document.currentScript.src);
+  const errorPageUrl = new URL("ErrPage/indexErr.html", new URL("../", apiScriptUrl));
+
+  function showErrorPage() {
+    if (global.location.pathname !== errorPageUrl.pathname) {
+      global.location.replace(errorPageUrl.href);
+    }
+  }
 
   async function request(path, options = {}) {
     let response;
@@ -19,6 +27,7 @@
         body: options.body === undefined ? undefined : JSON.stringify(options.body)
       });
     } catch (error) {
+      showErrorPage();
       throw new Error("No se pudo conectar con la API. Comprueba que el backend esté iniciado.");
     }
 
@@ -26,11 +35,15 @@
     try {
       data = await response.json();
     } catch (error) {
+      showErrorPage();
       throw new Error("La API devolvió una respuesta que no es JSON válido.");
     }
 
     if (!response.ok) {
-      throw new Error(data.error || `La API respondió con el estado ${response.status}.`);
+      const error = new Error(data.error || `La API respondió con el estado ${response.status}.`);
+      error.status = response.status;
+      showErrorPage();
+      throw error;
     }
 
     return data;
@@ -101,6 +114,11 @@
     getClasses: () => request("/classes"),
     getClass: (id) => request(`/classes/${encodeURIComponent(id)}`),
     getReviews: (id) => request(`/classes/${encodeURIComponent(id)}/reviews`),
+    createReview: (id, review, token) => request(`/classes/${encodeURIComponent(id)}/reviews`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+      body: review
+    }),
     getInstructors: () => request("/instructors"),
     registerUser: (user) => request("/Users", { method: "POST", body: user }),
     createSession: (credentials) => request("/Sessions", { method: "POST", body: credentials }),
@@ -116,6 +134,9 @@
     getMyEnrollments: (token) => request("/Sessions/me/enrollments", {
       headers: { Authorization: `Bearer ${token}` }
     }),
+    getMyPersonalRecords: (token) => request("/Sessions/me/personal-records", {
+      headers: { Authorization: `Bearer ${token}` }
+    }),
     getCurrentUser: (token) => request("/Sessions/me", {
       headers: { Authorization: `Bearer ${token}` }
     }),
@@ -125,6 +146,14 @@
     getAdminUser: (id, token) => request(`/admin/users/${encodeURIComponent(id)}`, {
       headers: { Authorization: `Bearer ${token}` }
     }),
+    createAdminPersonalRecord: (userId, record, token) => request(
+      `/admin/users/${encodeURIComponent(userId)}/personal-records`,
+      {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: record
+      }
+    ),
     formatPrice,
     formatSchedule,
     normalize

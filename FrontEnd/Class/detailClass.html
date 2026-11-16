@@ -66,14 +66,29 @@
         <li class="barra"><span class="barra__nivel">1</span><span class="barra__pista"><span class="barra__relleno" style="width: 0%"></span></span></li>
       </ul>
       <div class="lista-resenas"></div>
-      <p class="nueva-resena nueva-resena__input review-readonly-note">
-        Las reseñas son de solo lectura; la API aún no permite publicar reseñas.
-      </p>
+      <form class="review-form" id="review-form">
+        <label for="review-rating">Tu calificación</label>
+        <select class="nueva-resena__input review-form__control" id="review-rating" name="rating" required>
+          <option value="5">5 estrellas</option>
+          <option value="4">4 estrellas</option>
+          <option value="3">3 estrellas</option>
+          <option value="2">2 estrellas</option>
+          <option value="1">1 estrella</option>
+        </select>
+        <label for="review-comment">Cuéntanos cómo te fue</label>
+        <textarea class="nueva-resena__input review-form__comment" id="review-comment" name="comment" maxlength="500" required></textarea>
+        <button class="review-form__submit" type="submit">PUBLICAR RESEÑA</button>
+        <p class="review-form__status" id="review-status" role="status" aria-live="polite"></p>
+        <a class="review-form__login" id="review-login-link" href="../Log-In/indexLog.html" hidden>
+          Inicia sesión para publicar una reseña
+        </a>
+      </form>
     </section>
   </main>
 
   <script src="../js/api.js" defer></script>
   <script src="../js/class-detail.js" defer></script>
   <script src="detailClass.js" defer></script>
+  <script src="../js/navigation.js" defer></script>
 </body>
 </html>

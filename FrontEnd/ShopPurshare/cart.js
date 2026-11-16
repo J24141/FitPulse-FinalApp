@@ -27,7 +27,7 @@
     const token = sessionStorage.getItem("fitpulse-session-token");
     if (!token) {
       sessionStorage.setItem("fitpulse-pending-enrollment", String(selectedClass.id));
-      window.location.assign("../Log-In/indexLog.html");
+      window.FitPulseNavigation.go("../Log-In/indexLog.html");
       return;
     }
 

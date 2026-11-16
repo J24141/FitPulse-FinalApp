@@ -27,8 +27,9 @@
       const isAdmin = Boolean(user && user.role === "admin");
 
       if (adminOnlyPage && !isAdmin) {
-        window.location.replace(
-          user ? "../MyAccount-User/indexUser.html" : "../Log-In/indexLog.html"
+        window.FitPulseNavigation.go(
+          user ? "../MyAccount-User/indexUser.html" : "../Log-In/indexLog.html",
+          true
         );
         return;
       }
@@ -46,7 +47,7 @@
     } catch (error) {
       console.error("No se pudo verificar el acceso de administrador:", error);
       if (adminOnlyPage) {
-        window.location.replace("../Log-In/indexLog.html");
+        window.FitPulseNavigation.go("../Log-In/indexLog.html", true);
       }
     }
   }

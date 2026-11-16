@@ -59,6 +59,26 @@
       <div class="clases" id="user-enrollments"></div>
     </section>
 
+    <section class="seccion" id="personal-records-section" aria-labelledby="titulo-marcas" hidden>
+      <h2 class="seccion__titulo" id="titulo-marcas">MARCAS PERSONALES</h2>
+      <p class="personal-records-status" id="personal-records-status" role="status" aria-live="polite">
+        Cargando marcas personales...
+      </p>
+      <div class="personal-records" id="personal-records-list"></div>
+
+      <form class="personal-record-form" id="personal-record-form" hidden>
+        <h3 class="personal-record-form__title">Añadir una marca</h3>
+        <label for="record-name">Ejercicio o actividad</label>
+        <input id="record-name" name="name" maxlength="100" required>
+        <label for="record-value">Peso (kg)</label>
+        <input id="record-value" name="value" type="number" min="0.01" max="99999999.99" step="0.01" required>
+        <label for="record-date">Fecha de la marca</label>
+        <input id="record-date" name="achievedOn" type="date" required>
+        <button class="personal-record-form__submit" type="submit">GUARDAR MARCA</button>
+        <p class="personal-record-form__status" id="personal-record-form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
 
     <section class="seccion" aria-labelledby="titulo-pasadas" hidden>
       <h2 class="seccion__titulo" id="titulo-pasadas">CLASES PASADAS</h2>
@@ -246,8 +266,10 @@
     </div>
   </footer>
   <script src="../js/api.js" defer></script>
+  <script src="../js/navigation.js" defer></script>
   <script src="../js/session.js" defer></script>
   <script src="accountUser.js" defer></script>
   <script src="enrollments.js" defer></script>
+  <script src="personal-records.js" defer></script>
 </body>
 </html>

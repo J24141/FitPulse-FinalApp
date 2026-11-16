@@ -7,6 +7,7 @@ const express = require('express');
 const classesDao = require('../dao/classes.dao');
 const enrollmentsDao = require('../dao/enrollments.dao');
 const instructorsDao = require('../dao/instructors.dao');
+const personalRecordsDao = require('../dao/personal-records.dao');
 const usersDao = require('../dao/users.dao');
 const classesRoutes = require('../routes/classes.routes');
 const adminRoutes = require('../routes/admin.routes');
@@ -36,6 +37,7 @@ test('admin can create classes, users can enroll without payment, and dashboard 
     enrollmentGetForUser: enrollmentsDao.getForUser,
     enrollmentSales: enrollmentsDao.getTodaySales,
     instructorGetById: instructorsDao.getById,
+    personalRecordGetForUser: personalRecordsDao.getForUser,
     userGetById: usersDao.getById,
     userGetRegularUsers: usersDao.getRegularUsers
   };
@@ -77,6 +79,7 @@ test('admin can create classes, users can enroll without payment, and dashboard 
     name: 'Yoga',
     userId
   }];
+  personalRecordsDao.getForUser = async () => [];
   const server = await startServer();
 
   try {
@@ -190,8 +193,99 @@ test('admin can create classes, users can enroll without payment, and dashboard 
     enrollmentsDao.getForUser = originals.enrollmentGetForUser;
     enrollmentsDao.getTodaySales = originals.enrollmentSales;
     instructorsDao.getById = originals.instructorGetById;
+    personalRecordsDao.getForUser = originals.personalRecordGetForUser;
     usersDao.getById = originals.userGetById;
     usersDao.getRegularUsers = originals.userGetRegularUsers;
+    await server.close();
+  }
+});
+
+test('signed-in users can create class reviews, but invalid and unauthorized submissions are rejected', async () => {
+  const originals = {
+    classGetById: classesDao.getById,
+    reviewCreate: classesDao.createReview,
+    userGetById: usersDao.getById
+  };
+  usersDao.getById = async (id) => ({
+    id: Number(id),
+    name: Number(id) === 1 ? 'Admin' : 'Member',
+    role: Number(id) === 1 ? 'admin' : 'user'
+  });
+  classesDao.getById = async (id) => (Number(id) === 41 ? { id: 41, name: 'Yoga' } : null);
+  classesDao.createReview = async (review) => {
+    assert.deepEqual(review, {
+      userId: 2,
+      classId: 41,
+      rating: 5,
+      comment: 'Excelente clase'
+    });
+    return { id: 73 };
+  };
+  const server = await startServer();
+
+  try {
+    const userToken = createSessionToken(2).token;
+    const adminToken = createSessionToken(1).token;
+    const response = await fetch(`${server.url}/classes/41/reviews`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ rating: 5, comment: 'Excelente clase' })
+    });
+    assert.equal(response.status, 201);
+    const createdReview = (await response.json()).review;
+    assert.deepEqual({ ...createdReview, createdAt: undefined }, {
+      id: 73,
+      rating: 5,
+      comment: 'Excelente clase',
+      tags: [],
+      userName: 'Member',
+      createdAt: undefined
+    });
+    assert.equal(Number.isNaN(Date.parse(createdReview.createdAt)), false);
+
+    const unauthenticated = await fetch(`${server.url}/classes/41/reviews`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ rating: 5, comment: 'Excelente clase' })
+    });
+    assert.equal(unauthenticated.status, 401);
+
+    const invalidRating = await fetch(`${server.url}/classes/41/reviews`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ rating: 6, comment: 'No válido' })
+    });
+    assert.equal(invalidRating.status, 400);
+
+    const missingClass = await fetch(`${server.url}/classes/99/reviews`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ rating: 5, comment: 'Excelente clase' })
+    });
+    assert.equal(missingClass.status, 404);
+
+    const adminSubmission = await fetch(`${server.url}/classes/41/reviews`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${adminToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ rating: 5, comment: 'Excelente clase' })
+    });
+    assert.equal(adminSubmission.status, 403);
+  } finally {
+    classesDao.getById = originals.classGetById;
+    classesDao.createReview = originals.reviewCreate;
+    usersDao.getById = originals.userGetById;
     await server.close();
   }
 });

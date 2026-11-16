@@ -53,4 +53,13 @@ const getReviews = async (classId) => {
   return rows;
 };
 
-module.exports = { getAll, getById, create, getReviews };
+const createReview = async ({ userId, classId, rating, comment }) => {
+  const [result] = await db.query(
+    `INSERT INTO review (user_id, class_id, rating, comment, tags)
+     VALUES (?, ?, ?, ?, ?)`,
+    [userId, classId, rating, comment, '[]']
+  );
+  return { id: result.insertId };
+};
+
+module.exports = { getAll, getById, create, getReviews, createReview };
