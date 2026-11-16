@@ -2,26 +2,27 @@ const db = require('../services/mysql.service');
 
 const classQuery = `
   SELECT
-    c.idclass AS id,
-    c.name,
-    c.schedule,
-    c.price,
-    c.description,
-    c.category,
-    COALESCE(c.maximum_limit, c.\`maximum-limit\`, 20) AS maximumLimit,
-    i.id_instructor AS instructorId,
-    i.name AS instructorName
-  FROM \`class\` AS c
-  JOIN instructor AS i ON i.id_instructor = c.instructor_id_instructor
+    classRecord.idclass AS id,
+    classRecord.name,
+    classRecord.schedule,
+    classRecord.price,
+    classRecord.description,
+    classRecord.category,
+    COALESCE(classRecord.maximum_limit, classRecord.\`maximum-limit\`, 20) AS maximumLimit,
+    instructorRecord.id_instructor AS instructorId,
+    instructorRecord.name AS instructorName
+  FROM \`class\` AS classRecord
+  JOIN instructor AS instructorRecord
+    ON instructorRecord.id_instructor = classRecord.instructor_id_instructor
 `;
 
 const getAll = async () => {
-  const [rows] = await db.query(`${classQuery} ORDER BY c.schedule ASC`);
+  const [rows] = await db.query(`${classQuery} ORDER BY classRecord.schedule ASC`);
   return rows;
 };
 
 const getById = async (id) => {
-  const [rows] = await db.query(`${classQuery} WHERE c.idclass = ?`, [id]);
+  const [rows] = await db.query(`${classQuery} WHERE classRecord.idclass = ?`, [id]);
   return rows[0] || null;
 };
 
@@ -38,16 +39,16 @@ const create = async ({ name, schedule, instructorId }) => {
 const getReviews = async (classId) => {
   const [rows] = await db.query(
     `SELECT
-       r.idreview AS id,
-       r.rating,
-       r.comment,
-       r.tags,
-       r.created_at AS createdAt,
-       u.name AS userName
-     FROM review AS r
-     JOIN \`user\` AS u ON u.id = r.user_id
-     WHERE r.class_id = ?
-     ORDER BY r.created_at DESC`,
+       reviewRecord.idreview AS id,
+       reviewRecord.rating,
+       reviewRecord.comment,
+       reviewRecord.tags,
+       reviewRecord.created_at AS createdAt,
+       userRecord.name AS userName
+     FROM review AS reviewRecord
+     JOIN \`user\` AS userRecord ON userRecord.id = reviewRecord.user_id
+     WHERE reviewRecord.class_id = ?
+     ORDER BY reviewRecord.created_at DESC`,
     [classId]
   );
   return rows;

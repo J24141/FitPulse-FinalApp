@@ -10,11 +10,11 @@ const create = async ({ userId, classId }) => {
 
     const [classes] = await connection.query(
       `SELECT
-         c.idclass AS id,
-         c.price,
-         COALESCE(c.maximum_limit, c.\`maximum-limit\`, 20) AS maximumLimit
-       FROM \`class\` AS c
-       WHERE c.idclass = ?
+         classRecord.idclass AS id,
+         classRecord.price,
+         COALESCE(classRecord.maximum_limit, classRecord.\`maximum-limit\`, 20) AS maximumLimit
+       FROM \`class\` AS classRecord
+       WHERE classRecord.idclass = ?
        FOR UPDATE`,
       [classId]
     );
@@ -66,18 +66,19 @@ const create = async ({ userId, classId }) => {
 const getForUser = async (userId) => {
   const [rows] = await db.query(
     `SELECT
-       c.idclass AS id,
-       c.name,
-       c.schedule,
-       c.price,
-       COALESCE(c.maximum_limit, c.\`maximum-limit\`, 20) AS maximumLimit,
-       i.name AS instructorName,
-       e.created_at AS enrolledAt
-     FROM class_enrollment AS e
-     JOIN \`class\` AS c ON c.idclass = e.class_id
-     JOIN instructor AS i ON i.id_instructor = c.instructor_id_instructor
-     WHERE e.user_id = ?
-     ORDER BY e.created_at DESC`,
+       classRecord.idclass AS id,
+       classRecord.name,
+       classRecord.schedule,
+       classRecord.price,
+       COALESCE(classRecord.maximum_limit, classRecord.\`maximum-limit\`, 20) AS maximumLimit,
+       instructorRecord.name AS instructorName,
+       enrollmentRecord.created_at AS enrolledAt
+     FROM class_enrollment AS enrollmentRecord
+     JOIN \`class\` AS classRecord ON classRecord.idclass = enrollmentRecord.class_id
+     JOIN instructor AS instructorRecord
+       ON instructorRecord.id_instructor = classRecord.instructor_id_instructor
+     WHERE enrollmentRecord.user_id = ?
+     ORDER BY enrollmentRecord.created_at DESC`,
     [userId]
   );
   return rows;
@@ -85,28 +86,28 @@ const getForUser = async (userId) => {
 
 const getTodaySales = async () => {
   const dateFilter = `
-    e.created_at >= CURDATE()
-    AND e.created_at < CURDATE() + INTERVAL 1 DAY
+    enrollmentRecord.created_at >= CURDATE()
+    AND enrollmentRecord.created_at < CURDATE() + INTERVAL 1 DAY
   `;
   const [[summary]] = await db.query(
     `SELECT
        COUNT(*) AS count,
-       COALESCE(SUM(e.simulated_amount), 0) AS total
-     FROM class_enrollment AS e
+       COALESCE(SUM(enrollmentRecord.simulated_amount), 0) AS total
+     FROM class_enrollment AS enrollmentRecord
      WHERE ${dateFilter}`
   );
   const [rows] = await db.query(
     `SELECT
-       e.id,
-       u.name AS userName,
-       c.name AS className,
-       e.simulated_amount AS amount,
-       e.created_at AS createdAt
-     FROM class_enrollment AS e
-     JOIN \`user\` AS u ON u.id = e.user_id
-     JOIN \`class\` AS c ON c.idclass = e.class_id
+       enrollmentRecord.id,
+       userRecord.name AS userName,
+       classRecord.name AS className,
+       enrollmentRecord.simulated_amount AS amount,
+       enrollmentRecord.created_at AS createdAt
+     FROM class_enrollment AS enrollmentRecord
+     JOIN \`user\` AS userRecord ON userRecord.id = enrollmentRecord.user_id
+     JOIN \`class\` AS classRecord ON classRecord.idclass = enrollmentRecord.class_id
      WHERE ${dateFilter}
-     ORDER BY e.created_at DESC`
+     ORDER BY enrollmentRecord.created_at DESC`
   );
 
   return {
